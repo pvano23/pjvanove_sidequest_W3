@@ -41,7 +41,7 @@ function drawPage1() {
 
   // ---- Title ----
   fill(0); // black text
-  textSize(28);
+  textSize(40); // consistent title size
   textAlign(CENTER, CENTER);
   text("HOCKEY STORY: THE BREAKAWAY", width / 2, 80);
 
@@ -90,7 +90,7 @@ function drawPage2() {
 
   // ---- Title ----
   fill(0); // black text
-  textSize(48);
+  textSize(40); // consistent title size
   textAlign(CENTER, CENTER);
   text("SHOT RESULT: DEKE SUCCESS!", width / 2, 80);
 
@@ -139,7 +139,7 @@ function drawPage3() {
 
   // ---- Title ----
   fill(0); // black text
-  textSize(48);
+  textSize(40); // consistent title size
   textAlign(CENTER, CENTER);
   text("PASS RESULT: SHOT BLOCKED!", width / 2, 80);
 
@@ -183,16 +183,31 @@ function drawPage3() {
 // =====================================================================
 // Description: Final result screen showing WIN or LOSS based on previous choices
 function drawPage4() {
-  // Set background colour for page 4
-  background(200, 240, 200);
+  // Set background colour for page 4 - changes based on outcome
+  if (gameOutcome === "win") {
+    background(200, 240, 200); // Green for WIN
+  } else {
+    background(240, 200, 200); // Red/pink for LOSS
+  }
+
+  // ---- Main Result Display ----
+  // Display large WIN or LOSS text
+  fill(0); // black text
+  textSize(64); // VERY LARGE text for outcome
+  textAlign(CENTER, CENTER);
+  if (gameOutcome === "win") {
+    text("WIN!", width / 2, 100);
+  } else {
+    text("LOSS!", width / 2, 100);
+  }
 
   // ---- Title ----
-  fill(0); // black text
-  textSize(48);
+  fill(0);
+  textSize(40);
   textAlign(CENTER, CENTER);
-  text("FINAL RESULT", width / 2, 80);
+  text("FINAL RESULT", width / 2, 180);
 
-  // ---- Story text - Shows outcome based on gameOutcome variable ----
+  // ---- Story text - Shows detailed outcome based on gameOutcome variable ----
   fill(0);
   textSize(24);
   textAlign(CENTER, TOP);
@@ -201,21 +216,16 @@ function drawPage4() {
     text(
       "You scored! CHAMPIONS! 2-1 victory!",
       width / 2,
-      150
+      260
     );
   } else {
     // LOSS outcome - opponent scored
     text(
       "Miss! The opponent scored! You lost 2-1.",
       width / 2,
-      150
+      260
     );
   }
-
-  // ---- Outcome display buttons ----
-  // Note: These are display only, they show the final outcome
-  drawChoiceButton("A", "CHAMPIONS - WIN!", 200, 350);
-  drawChoiceButton("B", "MISS 2-1 - OPPONENTS SCORED", 600, 350);
 
   // ---- START OVER Button ----
   // This button will let player restart the game
@@ -240,15 +250,15 @@ function drawChoiceButton(letter, label, x, y) {
   
   // Draw letter indicator
   fill(255); // white text
-  textSize(20);
+  textSize(18); // letter size for button
   textAlign(CENTER, CENTER);
-  text(letter, x - 70, y);
+  text(letter, x - 65, y);
   
-  // Draw button label
+  // Draw button label (smaller text so it fits on button)
   fill(255); // white text
-  textSize(14);
+  textSize(12); // smaller for long button text
   textAlign(CENTER, CENTER);
-  text(label, x + 30, y);
+  text(label, x + 25, y);
 }
 
 // =====================================================================
@@ -320,8 +330,8 @@ function gameMousePressed() {
       gameOutcome = "win";
       currentPage = 4;
     } else if (isHover(page3ButtonB)) {
-      // Choice B: Wraparound → WINNING scenario
-      gameOutcome = "win";
+      // Choice B: Wraparound → LOSING scenario
+      gameOutcome = "loss";
       currentPage = 4;
     }
   } else if (currentPage === 4) {
