@@ -9,6 +9,27 @@
 // GAME STATE - Tracks which page and choice the player is on
 // =====================================================================
 let currentPage = 1; // Start at page 1
+let gameOutcome = "win"; // Tracks final outcome: "win" or "loss"
+
+// =====================================================================
+// BUTTON OBJECTS - Store position and size for click detection
+// =====================================================================
+// Page 1 buttons
+const page1ButtonA = { x: 200, y: 450, w: 180, h: 80 }; // TAKE THE SHOT
+const page1ButtonB = { x: 600, y: 450, w: 180, h: 80 }; // PASS BACK
+
+// Page 2 buttons
+const page2ButtonA = { x: 200, y: 450, w: 180, h: 80 }; // TEAMMATE HELPS
+const page2ButtonB = { x: 600, y: 450, w: 180, h: 80 }; // LET GOALIE COVER
+
+// Page 3 buttons
+const page3ButtonA = { x: 200, y: 450, w: 180, h: 80 }; // STICK ON ICE
+const page3ButtonB = { x: 600, y: 450, w: 180, h: 80 }; // WRAPAROUND
+
+// Page 4 buttons
+const page4ButtonA = { x: 200, y: 350, w: 180, h: 80 }; // CHAMPIONS WIN
+const page4ButtonB = { x: 600, y: 350, w: 180, h: 80 }; // MISS 2-1 LOSS
+const page4StartOverBtn = { x: 400, y: 650, w: 200, h: 60 }; // START OVER
 
 // =====================================================================
 // PAGE 1: INTRO PAGE / BREAK AWAY
@@ -160,7 +181,7 @@ function drawPage3() {
 // =====================================================================
 // PAGE 4: FINAL RESULT
 // =====================================================================
-// Description: Final result screen showing WIN or LOSS
+// Description: Final result screen showing WIN or LOSS based on previous choices
 function drawPage4() {
   // Set background colour for page 4
   background(200, 240, 200);
@@ -171,29 +192,36 @@ function drawPage4() {
   textAlign(CENTER, CENTER);
   text("FINAL RESULT", width / 2, 80);
 
-  // ---- Story text - PLACEHOLDER (will show different outcomes based on choices) ----
+  // ---- Story text - Shows outcome based on gameOutcome variable ----
   fill(0);
   textSize(24);
   textAlign(CENTER, TOP);
-  text(
-    "You scored! CHAMPIONS! 2-1 victory!",
-    width / 2,
-    150
-  );
+  if (gameOutcome === "win") {
+    // WIN outcome - player scored
+    text(
+      "You scored! CHAMPIONS! 2-1 victory!",
+      width / 2,
+      150
+    );
+  } else {
+    // LOSS outcome - opponent scored
+    text(
+      "Miss! The opponent scored! You lost 2-1.",
+      width / 2,
+      150
+    );
+  }
 
-  // ---- Outcome Buttons ----
-  // Left button: WIN
+  // ---- Outcome display buttons ----
+  // Note: These are display only, they show the final outcome
   drawChoiceButton("A", "CHAMPIONS - WIN!", 200, 350);
-
-  // Right button: LOSS
   drawChoiceButton("B", "MISS 2-1 - OPPONENTS SCORED", 600, 350);
 
   // ---- START OVER Button ----
-  // This button will appear at the bottom to let player restart
+  // This button will let player restart the game
   drawStartOverButton();
 
   // ---- Cursor feedback ----
-  // Currently static - buttons not interactive yet
   cursor(ARROW);
 }
 
@@ -212,7 +240,7 @@ function drawChoiceButton(letter, label, x, y) {
   
   // Draw letter indicator
   fill(255); // white text
-  textSize(32);
+  textSize(20);
   textAlign(CENTER, CENTER);
   text(letter, x - 70, y);
   
@@ -263,13 +291,45 @@ function drawGame() {
 // MOUSE INPUT FOR GAME SCREEN
 // =====================================================================
 // This function is called from main.js only when currentScreen === "game"
-// Currently disabled - buttons are not interactive yet (DELETE THIS FUNCTION WHEN READY TO MAKE BUTTONS INTERACTIVE)
+// Detects which button was clicked and moves to the next page accordingly
 function gameMousePressed() {
-  // Button interaction will be added here in a future version
-  // For now, this function exists but does nothing (DELETE WHEN ADDING INTERACTIVITY)
+  if (currentPage === 1) {
+    // PAGE 1: Choice between TAKE SHOT or PASS BACK
+    if (isHover(page1ButtonA)) {
+      // Choice A: Take the shot → goes to Page 2
+      currentPage = 2;
+    } else if (isHover(page1ButtonB)) {
+      // Choice B: Pass back → goes to Page 3
+      currentPage = 3;
+    }
+  } else if (currentPage === 2) {
+    // PAGE 2: Choice between TEAMMATE HELPS or LET GOALIE COVER
+    if (isHover(page2ButtonA)) {
+      // Choice A: Teammate helps → WINNING scenario
+      gameOutcome = "win";
+      currentPage = 4;
+    } else if (isHover(page2ButtonB)) {
+      // Choice B: Let goalie cover (automatic loss)
+      gameOutcome = "loss";
+      currentPage = 4;
+    }
+  } else if (currentPage === 3) {
+    // PAGE 3: Choice between STICK ON ICE or WRAPAROUND
+    if (isHover(page3ButtonA)) {
+      // Choice A: Stick on ice → WINNING scenario
+      gameOutcome = "win";
+      currentPage = 4;
+    } else if (isHover(page3ButtonB)) {
+      // Choice B: Wraparound → WINNING scenario
+      gameOutcome = "win";
+      currentPage = 4;
+    }
+  } else if (currentPage === 4) {
+    // PAGE 4: Final result with START OVER button
+    if (isHover(page4StartOverBtn)) {
+      // START OVER button - reset game to page 1
+      currentPage = 1;
+      gameOutcome = "win"; // Reset outcome
+    }
+  }
 }
-
-// ========== DELETE BELOW WHEN MAKING BUTTONS INTERACTIVE ==========
-// DELETE the gameKeyPressed() function below once you add button interactivity
-// DELETE the triggerRandomOutcome() function below once you add button interactivity
-// ====================================================================
