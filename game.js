@@ -73,10 +73,10 @@ function drawPage1() {
   drawChoiceButton("A", "TAKE THE SHOT", 200, 450);
 
   // ---- Choice A Button ----
-  drawChoiceButton("A", "TEAMMATE HELPS", 200, 450, 260, 100); // shortened to fit
+  drawChoiceButton("A", "TEAMMATE HELPS GET PUCK LOOSE", 200, 450, 260, 100); 
 
   // ---- Choice B Button ----
-  drawChoiceButton("B", "LET GOALIE COVER", 600, 450, 260, 100); // shortened to fit
+  drawChoiceButton("B", "LET GOALIE COVER", 600, 450, 260, 100); 
   cursor(ARROW);
 }
 
@@ -246,19 +246,19 @@ function drawChoiceButton(letter, label, x, y) {
   // Draw button background
   noStroke();
   fill(100, 150, 200); // blue button
-  rect(x, y, 180, 80, 14); // last value = rounded corners
+  rect(x, y, 320, 110, 14); // last value = rounded corners
   
   // Draw letter indicator
   fill(255); // white text
-  textSize(18); // letter size for button
+  textSize(24); // letter size for button
   textAlign(CENTER, CENTER);
-  text(letter, x - 65, y);
+  text(letter, x - 80, y);
   
   // Draw button label (smaller text so it fits on button)
   fill(255); // white text
-  textSize(12); // smaller for long button text
+  textSize(16); // smaller for long button text
   textAlign(CENTER, CENTER);
-  text(label, x + 25, y);
+  text(label, x + 30, y);
 }
 
 // =====================================================================
