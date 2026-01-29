@@ -70,13 +70,10 @@ function drawPage1() {
   );
 
   // ---- Choice A Button ----
-  drawChoiceButton("A", "TAKE THE SHOT", 200, 450);
-
-  // ---- Choice A Button ----
-  drawChoiceButton("A", "TEAMMATE HELPS GET PUCK LOOSE", 200, 450, 260, 100); 
+  drawChoiceButton("A", "TAKE THE SHOT", 240, 450);
 
   // ---- Choice B Button ----
-  drawChoiceButton("B", "LET GOALIE COVER", 600, 450, 260, 100); 
+  drawChoiceButton("B", "PASS BACK", 600, 450);
   cursor(ARROW);
 }
 
@@ -99,14 +96,14 @@ function drawPage2() {
   textSize(20);
   textAlign(CENTER, TOP);
   text(
-    "You attempted to deke the goalie and succeeded! The puck is now loose in the crease.",
+    "You chose to deke the goalie and the puck becomes loose!",
     width / 2,
     150
   );
 
   textSize(20);
   text(
-    "Your teammate is pushing for a rebound, but the goalie is also scrambling.",
+    "Your teammate is ready to help get the puck loose to continue play.",
     width / 2,
     200
   );
@@ -119,7 +116,7 @@ function drawPage2() {
   );
 
   // ---- Choice A Button ----
-  drawChoiceButton("A", "TEAMMATE HELPS GET PUCK LOOSE", 200, 450);
+  drawChoiceButton("A", "TEAMMATE HELPS GET PUCK LOOSE", 240, 450);
 
   // ---- Choice B Button ----
   drawChoiceButton("B", "LET GOALIE COVER PUCK", 600, 450);
@@ -148,27 +145,27 @@ function drawPage3() {
   textSize(20);
   textAlign(CENTER, TOP);
   text(
-    "You passed to your teammate and they took a shot, but the goalie stopped it!",
+    "You have chosen to pass to your teammate, their shot is stopped and puck bounces to you!",
     width / 2,
     150
   );
 
   textSize(20);
   text(
-    "The puck bounces back to you. The goalie is out of position after the save.",
+    "What's your next move?",
     width / 2,
     200
   );
 
   textSize(20);
   text(
-    "What's your next move?",
+    "",
     width / 2,
     250
   );
 
   // ---- Choice A Button ----
-  drawChoiceButton("A", "STICK ON ICE", 200, 450);
+  drawChoiceButton("A", "STICK ON ICE", 240, 450);
 
   // ---- Choice B Button ----
   drawChoiceButton("B", "WRAPAROUND", 600, 450);
@@ -197,8 +194,14 @@ function drawPage4() {
   textAlign(CENTER, CENTER);
   if (gameOutcome === "win") {
     text("WIN!", width / 2, 100);
+    // Trophy emoji for winning
+    textSize(140);
+    text("🏆", width / 2, 420);
   } else {
     text("LOSS!", width / 2, 100);
+    // Facepalm emoji for losing
+    textSize(140);
+    text("🤦", width / 2, 420);
   }
 
   // ---- Title ----
@@ -214,14 +217,14 @@ function drawPage4() {
   if (gameOutcome === "win") {
     // WIN outcome - player scored
     text(
-      "You scored! CHAMPIONS! 2-1 victory!",
+      "CHAMPIONS! You won 2-1!",
       width / 2,
       260
     );
   } else {
     // LOSS outcome - opponent scored
     text(
-      "Miss! The opponent scored! You lost 2-1.",
+      "MISS! 2-1 loss. Opponents scored and won!",
       width / 2,
       260
     );
@@ -246,19 +249,19 @@ function drawChoiceButton(letter, label, x, y) {
   // Draw button background
   noStroke();
   fill(100, 150, 200); // blue button
-  rect(x, y, 320, 110, 14); // last value = rounded corners
+  rect(x, y, 320, 60, 14); // last value = rounded corners
   
   // Draw letter indicator
   fill(255); // white text
-  textSize(24); // letter size for button
+  textSize(14); // letter size for button
   textAlign(CENTER, CENTER);
-  text(letter, x - 80, y);
+  text(letter, x - 110, y);
   
-  // Draw button label (smaller text so it fits on button)
+  // Draw button label 
   fill(255); // white text
-  textSize(16); // smaller for long button text
+  textSize(12); 
   textAlign(CENTER, CENTER);
-  text(label, x + 30, y);
+  text(label, x + 25, y);
 }
 
 // =====================================================================

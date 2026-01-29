@@ -12,7 +12,7 @@ You are playing to win in the finals it is Game 7, and the game is tied 0-0 with
 
 ## Interaction Instructions
 
-This entertainment game where users just click and choose their team’s result. Users will be required to read the text on the screen which explains each situation their hockey player is in after a decision. User will click one button A or B with a corresponding situation. The screen will automatically change once an option is picked. Depending on the user’s decision they will either see an ending page with a Win or Loss. If user wants to play again, they do so by pressing the Star Over button middle of screen. 
+This entertainment game where users just click and choose their team’s result. Users will be required to read the text on the screen which explains each scenario their hockey player is in after a decision. User will click one button A or B with a corresponding situation. The screen will automatically change once an option is picked. Depending on the user’s decision they will either see an ending page with a Win or Loss. If user wants to play again, they do so by pressing the Star Over button middle of screen. 
 
 ---
 

@@ -32,22 +32,20 @@ function drawStart() {
     label: "START",
   };
 
-  const instrBtn = {
-    x: width / 2,
-    y: 430,
-    w: 240,
-    h: 80,
-    label: "INSTRUCTIONS",
-  };
-
-  // Draw both buttons
+  // Draw the start button
   drawButton(startBtn);
-  drawButton(instrBtn);
+
+  // ---- Instructions ----
+  fill(30, 50, 60);
+  textSize(16);
+  textAlign(CENTER, TOP);
+  text("Click and choose: Click one button A or B with a corresponding scenario.", width / 2, 420);
+  text("Screen automatically changes to the next scenario.", width / 2, 445);
 
   // ---- Cursor feedback ----
-  // If the mouse is over either button, show a hand cursor
+  // If the mouse is over the button, show a hand cursor
   // so the player knows it is clickable.
-  const over = isHover(startBtn) || isHover(instrBtn);
+  const over = isHover(startBtn);
   cursor(over ? HAND : ARROW);
 }
 
@@ -58,15 +56,10 @@ function drawStart() {
 function startMousePressed() {
   // For input checks, we only need x,y,w,h (label is optional)
   const startBtn = { x: width / 2, y: 320, w: 240, h: 80 };
-  const instrBtn = { x: width / 2, y: 430, w: 240, h: 80 };
 
   // If START is clicked, go to the game screen
   if (isHover(startBtn)) {
     currentScreen = "game";
-  }
-  // If INSTRUCTIONS is clicked, go to the instructions screen
-  else if (isHover(instrBtn)) {
-    currentScreen = "instr";
   }
 }
 
@@ -75,14 +68,9 @@ function startMousePressed() {
 // ------------------------------------------------------------
 // Provides keyboard shortcuts:
 // - ENTER starts the game
-// - I opens instructions
 function startKeyPressed() {
   if (keyCode === ENTER) {
     currentScreen = "game";
-  }
-
-  if (key === "i" || key === "I") {
-    currentScreen = "instr";
   }
 }
 
@@ -110,11 +98,11 @@ function drawButton({ x, y, w, h, label }) {
   // We also add a shadow using drawingContext (p5 lets you access the
   // underlying canvas context for effects like shadows).
   if (hover) {
-    fill(255, 200, 150, 220); // warm coral on hover
+    fill(0, 100, 150, 220);
 
     // Shadow settings (only when hovered)
     drawingContext.shadowBlur = 20;
-    drawingContext.shadowColor = color(255, 180, 120);
+    drawingContext.shadowColor = color(0, 100, 150);
   } else {
     fill(255, 240, 210, 210); // soft cream base
 
