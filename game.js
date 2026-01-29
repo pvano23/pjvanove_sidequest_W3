@@ -319,7 +319,7 @@ function gameMousePressed() {
       gameOutcome = "win";
       currentPage = 4;
     } else if (isHover(page2ButtonB)) {
-      // Choice B: Let goalie cover (automatic loss)
+      // Choice B: Let goalie cover
       gameOutcome = "loss";
       currentPage = 4;
     }
