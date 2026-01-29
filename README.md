@@ -1,28 +1,18 @@
 ## Project Title
 
-GBDA302 Week 3 Example 1: Instructions Screen with Back button
-
----
-
-## Authors
-
-Karen Cochrane and David Han
+Side Quest #3 Build an interactive story that user goes through multiple decisions processes.
 
 ---
 
 ## Description
 
-This p5.js project demonstrates a simple multi-screen game structure using a state-based approach. The example includes a start screen, an instructions screen with a back button, a basic game screen, and win/lose outcome screens. The focus is on showing how to separate screens into different files, route input based on the current game state, and design simple UI elements such as buttons and keyboard controls.
+You are playing to win in the finals it is Game 7, and the game is tied 0-0 with a minute left. You are on a breakaway with a teammate behind you and have a decision to make do you either shoot or pass? Think, Choose and Unfold your team’s result. 
 
 ---
 
-## Learning Goals
+## Interaction Instructions
 
-- Understand how to manage multiple game states using a shared currentScreen variable
-- Practice separating code across multiple files for readability and maintenance
-- Implement clickable and keyboard-accessible UI buttons
-- Learn how to route draw(), mousePressed(), and keyPressed() logic based on the active screen
-- Build a basic instructions screen with a functional back button
+This entertainment game where users just click and choose their team’s result. Users will be required to read the text on the screen which explains each situation their hockey player is in after a decision. User will click one button A or B with a corresponding situation. The screen will automatically change once an option is picked. Depending on the user’s decision they will either see an ending page with a Win or Loss. If user wants to play again, they do so by pressing the Star Over button middle of screen. 
 
 ---
 
@@ -35,5 +25,7 @@ N/A
 ## GenAI
 
 The code was written by Dr. Karen Cochrane but she used GenAI to write the comments.
+
+There was code added by Paige Van Overberghe to... and say what GenAI does
 
 ---
