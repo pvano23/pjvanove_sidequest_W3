@@ -15,7 +15,7 @@ let gameOutcome = "win"; // Tracks final outcome: "win" or "loss"
 // BUTTON OBJECTS - Store position and size for click detection
 // =====================================================================
 // Page 1 buttons
-const page1ButtonA = { x: 200, y: 450, w: 180, h: 80 }; // TAKE THE SHOT
+const page1ButtonA = { x: 240, y: 450, w: 180, h: 100 }; // TAKE THE SHOT
 const page1ButtonB = { x: 600, y: 450, w: 180, h: 80 }; // PASS BACK
 
 // Page 2 buttons
@@ -72,11 +72,11 @@ function drawPage1() {
   // ---- Choice A Button ----
   drawChoiceButton("A", "TAKE THE SHOT", 200, 450);
 
-  // ---- Choice B Button ----
-  drawChoiceButton("B", "PASS BACK", 600, 450);
+  // ---- Choice A Button ----
+  drawChoiceButton("A", "TEAMMATE HELPS", 200, 450, 260, 100); // shortened to fit
 
-  // ---- Cursor feedback ----
-  // Currently static - buttons not interactive yet
+  // ---- Choice B Button ----
+  drawChoiceButton("B", "LET GOALIE COVER", 600, 450, 260, 100); // shortened to fit
   cursor(ARROW);
 }
 
@@ -122,7 +122,7 @@ function drawPage2() {
   drawChoiceButton("A", "TEAMMATE HELPS GET PUCK LOOSE", 200, 450);
 
   // ---- Choice B Button ----
-  drawChoiceButton("B", "LET GOALIE COVER PUCK (AUTOMATIC LOSS)", 600, 450);
+  drawChoiceButton("B", "LET GOALIE COVER PUCK", 600, 450);
 
   // ---- Cursor feedback ----
   // Currently static - buttons not interactive yet
