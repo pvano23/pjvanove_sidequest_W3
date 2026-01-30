@@ -47,7 +47,7 @@ function drawPage1() {
 
   // ---- Story text ----
   fill(0);
-  textSize(20);
+  textSize(18);
   textAlign(CENTER, TOP);
   text(
     "You have the puck and a perfect breakaway opportunity! The goalie is out of position.",
@@ -142,7 +142,7 @@ function drawPage3() {
 
   // ---- Story text ----
   fill(0);
-  textSize(20);
+  textSize(18);
   textAlign(CENTER, TOP);
   text(
     "You have chosen to pass to your teammate, their shot is stopped and puck bounces to you!",
@@ -150,7 +150,7 @@ function drawPage3() {
     150
   );
 
-  textSize(20);
+  textSize(18);
   text(
     "What's your next move?",
     width / 2,
