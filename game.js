@@ -26,6 +26,10 @@ const page2ButtonB = { x: 600, y: 450, w: 180, h: 80 }; // LET GOALIE COVER
 const page3ButtonA = { x: 200, y: 450, w: 180, h: 80 }; // STICK ON ICE
 const page3ButtonB = { x: 600, y: 450, w: 180, h: 80 }; // WRAPAROUND
 
+// Page 3.5 buttons (Puck Is Loose)
+const page35ButtonA = { x: 240, y: 450, w: 180, h: 80 }; // HEAD BACK DOOR
+const page35ButtonB = { x: 600, y: 450, w: 180, h: 80 }; // PLAY TIC TAC TOE
+
 // Page 4 buttons
 const page4ButtonA = { x: 200, y: 350, w: 180, h: 80 }; // CHAMPIONS WIN
 const page4ButtonB = { x: 600, y: 350, w: 180, h: 80 }; // MISS 2-1 LOSS
@@ -176,6 +180,47 @@ function drawPage3() {
 }
 
 // =====================================================================
+// PAGE 3.5: PUCK IS LOOSE
+// =====================================================================
+// Description: Puck is loose and player has two options
+function drawPage35() {
+  // Set background colour for page 3.5
+  background(255, 245, 200);
+
+  // ---- Title ----
+  fill(0); // black text
+  textSize(40); // consistent title size
+  textAlign(CENTER, CENTER);
+  text("PUCK IS LOOSE!", width / 2, 80);
+
+  // ---- Story text ----
+  fill(0);
+  textSize(20);
+  textAlign(CENTER, TOP);
+  text(
+    "Your teammate helped get the puck loose! Play continues.",
+    width / 2,
+    150
+  );
+
+  textSize(20);
+  text(
+    "What's your next move?",
+    width / 2,
+    200
+  );
+
+  // ---- Choice A Button ----
+  drawChoiceButton("A", "HEAD BACK DOOR", 240, 450);
+
+  // ---- Choice B Button ----
+  drawChoiceButton("B", "PLAY TIC TAC TOE", 600, 450);
+
+  // ---- Cursor feedback ----
+  cursor(ARROW);
+}
+
+// =====================================================================
 // PAGE 4: FINAL RESULT
 // =====================================================================
 // Description: Final result screen showing WIN or LOSS based on previous choices
@@ -295,6 +340,8 @@ function drawGame() {
     drawPage2();
   } else if (currentPage === 3) {
     drawPage3();
+  } else if (currentPage === 3.5) {
+    drawPage35();
   } else if (currentPage === 4) {
     drawPage4();
   }
@@ -318,9 +365,8 @@ function gameMousePressed() {
   } else if (currentPage === 2) {
     // PAGE 2: Choice between TEAMMATE HELPS or LET GOALIE COVER
     if (isHover(page2ButtonA)) {
-      // Choice A: Teammate helps → WINNING scenario
-      gameOutcome = "win";
-      currentPage = 4;
+      // Choice A: Teammate helps → goes to Page 3.5
+      currentPage = 3.5;
     } else if (isHover(page2ButtonB)) {
       // Choice B: Let goalie cover
       gameOutcome = "loss";
@@ -334,6 +380,17 @@ function gameMousePressed() {
       currentPage = 4;
     } else if (isHover(page3ButtonB)) {
       // Choice B: Wraparound → LOSING scenario
+      gameOutcome = "loss";
+      currentPage = 4;
+    }
+  } else if (currentPage === 3.5) {
+    // PAGE 3.5: Choice between HEAD BACK DOOR or PLAY TIC TAC TOE
+    if (isHover(page35ButtonA)) {
+      // Choice A: Head back door → WINNING scenario
+      gameOutcome = "win";
+      currentPage = 4;
+    } else if (isHover(page35ButtonB)) {
+      // Choice B: Play tic tac toe → LOSING scenario
       gameOutcome = "loss";
       currentPage = 4;
     }
