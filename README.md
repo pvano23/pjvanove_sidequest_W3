@@ -26,6 +26,6 @@ N/A
 
 The code was written by Dr. Karen Cochrane but she used GenAI to write the comments.
 
-There was code added by Paige Van Overberghe to... and say what GenAI does
+There was code added by Paige Van Overberghe and say what GenAI added complex code with comments.
 
 ---
